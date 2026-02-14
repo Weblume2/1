@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masinga Lodge | Luxury Accommodation in Gillitts, Everton</title>
+    <meta name="description" content="Stay at Masinga Lodge in Everton, Gillitts. Enjoy free Wi-Fi, breakfast, pool access and luxury indoor accommodation. Book direct for the best rates.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A059',
+                            dark: '#1A1A1A',
+                            charcoal: '#2D2D2D',
+                            cream: '#F9F9F7',
+                            gray: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600596542815-2a4d9f0152ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Animation Utilities */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+        
+        /* Map Overlay fix */
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Lightbox (Simple) */
+        #lightbox {
+            display: none;
+        }
+        #lightbox.active {
+            display: flex;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F9F7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-charcoal font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-serif font-bold text-white tracking-widest uppercase">
+                        Masinga<span class="text-brand-gold">.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-white hover:text-brand-gold transition duration-300 text-sm tracking-wide uppercase">About</a>
+                    <a href="#rooms" class="text-white hover:text-brand-gold transition duration-300 text-sm tracking-wide uppercase">Rooms</a>
+                    <a href="#amenities" class="text-white hover:text-brand-gold transition duration-300 text-sm tracking-wide uppercase">Amenities</a>
+                    <a href="#gallery" class="text-white hover:text-brand-gold transition duration-300 text-sm tracking-wide uppercase">Gallery</a>
+                    <a href="#contact" class="text-white hover:text-brand-gold transition duration-300 text-sm tracking-wide uppercase">Contact</a>
+                    <a href="#book" class="bg-brand-gold hover:bg-white hover:text-brand-dark text-white px-6 py-2 rounded-full transition duration-300 text-sm font-bold uppercase tracking-wide shadow-lg">Check Availability</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-brand-gold focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark absolute top-16 left-0 w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-2 text-white hover:text-brand-gold text-base font-medium">About</a>
+                <a href="#rooms" class="block px-3 py-2 text-white hover:text-brand-gold text-base font-medium">Rooms</a>
+                <a href="#gallery" class="block px-3 py-2 text-white hover:text-brand-gold text-base font-medium">Gallery</a>
+                <a href="#location" class="block px-3 py-2 text-white hover:text-brand-gold text-base font-medium">Location</a>
+                <a href="#book" class="block w-full text-center mt-4 bg-brand-gold text-white px-3 py-3 rounded-md font-bold">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen bg-hero-pattern bg-cover bg-center bg-fixed bg-no-repeat flex items-center justify-center text-center px-4">
+        <div class="relative z-10 max-w-4xl mx-auto fade-in-section">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white font-bold mb-6 leading-tight">
+                Luxury Comfort in <br/>
+                <span class="italic text-brand-gold">Everton, Gillitts</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light tracking-wide max-w-2xl mx-auto">
+                Experience refined indoor lodging with comfort, privacy and warm hospitality in the heart of KwaZulu-Natal.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#book" class="bg-brand-gold text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white hover:text-brand-dark transition duration-300 shadow-xl">
+                    Check Availability
+                </a>
+                <a href="#rooms" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white hover:text-brand-dark transition duration-300">
+                    View Rooms
+                </a>
+            </div>
+            
+            <!-- Trust Badges -->
+            <div class="mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm font-medium tracking-wide">
+                <div class="flex items-center gap-2"><i class="fas fa-star text-brand-gold"></i> 4.8 Google Rating</div>
+                <div class="hidden sm:flex items-center gap-2">|</div>
+                <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-brand-gold"></i> Everton, Gillitts</div>
+                <div class="hidden sm:flex items-center gap-2">|</div>
+                <div class="flex items-center gap-2"><i class="fas fa-wifi text-brand-gold"></i> Free Wi-Fi</div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white hover:text-brand-gold"><i class="fas fa-chevron-down text-2xl"></i></a>
+        </div>
+    </header>
+
+    <!-- Booking Bar (Desktop) -->
+    <div class="hidden md:block relative z-30 -mt-16 container mx-auto px-4">
+        <div class="bg-white rounded-lg shadow-2xl p-6 lg:flex lg:items-end lg:justify-between gap-4 max-w-5xl mx-auto">
+            <div class="flex-1">
+                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Check In</label>
+                <input type="date" class="w-full border-b border-gray-300 py-2 text-brand-charcoal focus:outline-none focus:border-brand-gold">
+            </div>
+            <div class="flex-1">
+                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Check Out</label>
+                <input type="date" class="w-full border-b border-gray-300 py-2 text-brand-charcoal focus:outline-none focus:border-brand-gold">
+            </div>
+            <div class="flex-1">
+                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Guests</label>
+                <select class="w-full border-b border-gray-300 py-2 text-brand-charcoal focus:outline-none focus:border-brand-gold bg-transparent">
+                    <option>1 Guest</option>
+                    <option>2 Guests</option>
+                    <option>Family (3+)</option>
+                </select>
+            </div>
+            <div class="flex-none">
+                <button onclick="document.getElementById('book').scrollIntoView({behavior: 'smooth'})" class="w-full lg:w-auto bg-brand-dark text-white px-8 py-3 rounded-md font-bold uppercase hover:bg-brand-gold transition duration-300">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 px-4 bg-brand-cream overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Image Side -->
+            <div class="relative fade-in-section">
+                <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-gold/20 rounded-tl-3xl z-0"></div>
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Masinga Lodge Exterior" class="relative z-10 w-full h-[500px] object-cover rounded-lg shadow-xl hover:scale-[1.01] transition duration-500">
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-charcoal/10 rounded-br-3xl z-0"></div>
+            </div>
+            
+            <!-- Text Side -->
+            <div class="fade-in-section">
+                <span class="text-brand-gold font-bold tracking-widest uppercase text-sm mb-2 block">Our Story</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-brand-charcoal mb-6">A Peaceful Escape in Everton</h2>
+                <div class="h-1 w-20 bg-brand-gold mb-8"></div>
+                <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                    Located at 18 Dovehouse Road, Everton, Masinga Lodge offers elegant accommodation surrounded by natural beauty and quiet charm. Whether you are seeking a weekend escape, a comfortable stay for business, or a family retreat, our lodge provides the perfect sanctuary.
+                </p>
+                <ul class="space-y-3 mb-8 text-gray-700">
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-brand-gold"></i> Perfect for Business Travellers</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-brand-gold"></i> Romantic Couples Getaways</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-brand-gold"></i> Secure Family Stays</li>
+                </ul>
+                <a href="#rooms" class="inline-block text-brand-dark font-bold border-b-2 border-brand-gold pb-1 hover:text-brand-gold transition duration-300">Explore Our Rooms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-charcoal mb-4">Premium Amenities</h2>
+                <p class="text-gray-500">Everything you need for a comfortable and memorable stay.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Items -->
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-wifi text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">Fast Free Wi-Fi</h3>
+                </div>
+                
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-swimming-pool text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">Outdoor Pool</h3>
+                </div>
+                
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-coffee text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">Complimentary Breakfast</h3>
+                </div>
+
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-paw text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">Pet-Friendly</h3>
+                </div>
+
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-parking text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">Free Secure Parking</h3>
+                </div>
+
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-snowflake text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">Air Conditioning</h3>
+                </div>
+
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-utensils text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">On-site Dining</h3>
+                </div>
+
+                <div class="text-center p-6 hover:bg-brand-cream rounded-xl transition duration-300 fade-in-section">
+                    <div class="w-16 h-16 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold mb-4">
+                        <i class="fas fa-ban-smoking text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-brand-charcoal mb-2">Smoke-Free Property</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-20 bg-brand-charcoal text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-in-section">
+                <div>
+                    <span class="text-brand-gold font-bold tracking-widest uppercase text-sm block mb-2">Accommodation</span>
+                    <h2 class="text-3xl md:text-5xl font-serif">Stay in Comfort</h2>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <p class="text-gray-400">Best Rate Guarantee when booking direct.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Room Card 1 -->
+                <div class="group bg-brand-dark rounded-xl overflow-hidden shadow-2xl transition duration-300 hover:-translate-y-2 fade-in-section">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1616594039964-40891a909d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Deluxe Double Room" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-brand-gold text-white text-xs font-bold px-3 py-1 rounded">Best Seller</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif mb-2">Deluxe Double Room</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Spacious bedroom with premium bedding and garden views.</p>
+                        <div class="flex gap-3 mb-6 text-sm text-gray-500">
+                            <span><i class="fas fa-user"></i> 2 Guests</span>
+                            <span><i class="fas fa-bed"></i> Queen</span>
+                            <span><i class="fas fa-wifi"></i> Free Wifi</span>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-gray-700 pt-4">
+                            <div>
+                                <span class="text-xs text-gray-400 block">From</span>
+                                <span class="text-xl font-bold text-brand-gold">R 2,045</span>
+                            </div>
+                            <a href="#book" class="text-white hover:text-brand-gold font-bold text-sm uppercase tracking-wide transition">Book Now <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Card 2 -->
+                <div class="group bg-brand-dark rounded-xl overflow-hidden shadow-2xl transition duration-300 hover:-translate-y-2 fade-in-section">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Executive Suite" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif mb-2">Executive Suite</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Includes kitchenette and private lounge area.</p>
+                        <div class="flex gap-3 mb-6 text-sm text-gray-500">
+                            <span><i class="fas fa-user"></i> 2 Guests</span>
+                            <span><i class="fas fa-utensils"></i> Kitchen</span>
+                            <span><i class="fas fa-wind"></i> A/C</span>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-gray-700 pt-4">
+                            <div>
+                                <span class="text-xs text-gray-400 block">From</span>
+                                <span class="text-xl font-bold text-brand-gold">R 2,350</span>
+                            </div>
+                            <a href="#book" class="text-white hover:text-brand-gold font-bold text-sm uppercase tracking-wide transition">Book Now <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room Card 3 -->
+                <div class="group bg-brand-dark rounded-xl overflow-hidden shadow-2xl transition duration-300 hover:-translate-y-2 fade-in-section">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Family Room" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-serif mb-2">Family Room</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Large space suitable for families with direct pool access.</p>
+                        <div class="flex gap-3 mb-6 text-sm text-gray-500">
+                            <span><i class="fas fa-users"></i> 4 Guests</span>
+                            <span><i class="fas fa-swimmer"></i> Pool View</span>
+                            <span><i class="fas fa-tv"></i> Smart TV</span>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-gray-700 pt-4">
+                            <div>
+                                <span class="text-xs text-gray-400 block">From</span>
+                                <span class="text-xl font-bold text-brand-gold">R 2,800</span>
+                            </div>
+                            <a href="#book" class="text-white hover:text-brand-gold font-bold text-sm uppercase tracking-wide transition">Book Now <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12 fade-in-section">
+                <span class="text-brand-gold font-bold tracking-widest uppercase text-sm block mb-2">Visual Tour</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-brand-charcoal">The Masinga Experience</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+                <!-- Masonry Style Grid using col-span/row-span -->
+                <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-lg cursor-pointer fade-in-section" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Lodge Exterior">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg cursor-pointer fade-in-section" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Detail">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                         <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg cursor-pointer fade-in-section" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Interior">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                         <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 relative group overflow-hidden rounded-lg cursor-pointer fade-in-section" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1576013551627-5cc20b368619?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Pool Area">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                         <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-lg cursor-pointer fade-in-section" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1525207934214-58e69a8f8a3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Breakfast">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                         <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg cursor-pointer fade-in-section" onclick="openLightbox(this)">
+                    <img src="https://images.unsplash.com/photo-1586611292717-f828b167408c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Bathroom">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                         <i class="fas fa-search-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col items-center mb-12 fade-in-section">
+                <div class="text-brand-gold text-2xl mb-2">★★★★★</div>
+                <h2 class="text-3xl md:text-5xl font-serif text-brand-charcoal text-center mb-2">Loved by Our Guests</h2>
+                <p class="text-gray-500">4.8 Average Google Rating (31 Reviews)</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-cream p-8 rounded-xl shadow-sm fade-in-section">
+                    <div class="text-brand-gold text-sm mb-4">★★★★★</div>
+                    <p class="text-gray-600 italic mb-6">"An absolute gem in Gillitts. The rooms were pristine and the staff went above and beyond. Truly a peaceful escape."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-gray-600">S</div>
+                        <div>
+                            <p class="font-bold text-sm">Sarah Mitchell</p>
+                            <p class="text-xs text-gray-500">Couple Stay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-cream p-8 rounded-xl shadow-sm fade-in-section">
+                    <div class="text-brand-gold text-sm mb-4">★★★★★</div>
+                    <p class="text-gray-600 italic mb-6">"Business travel made easy. The Wi-Fi was fast, parking secure, and the bed incredibly comfortable. Highly recommended."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-gray-600">D</div>
+                        <div>
+                            <p class="font-bold text-sm">David K.</p>
+                            <p class="text-xs text-gray-500">Business Trip</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-cream p-8 rounded-xl shadow-sm fade-in-section">
+                    <div class="text-brand-gold text-sm mb-4">★★★★★</div>
+                    <p class="text-gray-600 italic mb-6">"We loved the pool area and the breakfast. The location is perfect for exploring Hillcrest. We will be back!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center font-bold text-gray-600">J</div>
+                        <div>
+                            <p class="font-bold text-sm">Jessica Van Zyl</p>
+                            <p class="text-xs text-gray-500">Family Holiday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="text-brand-gold border-b border-brand-gold hover:text-brand-charcoal transition">Read More Reviews on Google</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-0 flex flex-col md:flex-row h-auto md:h-[500px]">
+        <div class="md:w-1/2 bg-brand-charcoal text-white p-12 flex flex-col justify-center">
+            <span class="text-brand-gold font-bold tracking-widest uppercase text-sm block mb-2">Location</span>
+            <h2 class="text-3xl md:text-4xl font-serif mb-6">Perfectly Located in Gillitts</h2>
+            <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-4">
+                    <i class="fas fa-map-pin mt-1 text-brand-gold"></i>
+                    <p>18 Dovehouse Rd, Everton, Gillitts, 3610<br>KwaZulu-Natal, South Africa</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-plane text-brand-gold"></i>
+                    <p>45 min to King Shaka Intl. Airport</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fas fa-shopping-bag text-brand-gold"></i>
+                    <p>5 min to Hillcrest Shopping Centre</p>
+                </div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="inline-block bg-transparent border border-white px-6 py-3 rounded text-sm font-bold uppercase hover:bg-white hover:text-brand-charcoal transition w-max">Get Directions</a>
+        </div>
+        <div class="md:w-1/2 bg-gray-200 map-container">
+            <!-- Google Maps Embed Placeholder -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.651717277884!2d30.7781!3d-29.7886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ3JzE5LjAiUyAzMMKwNDYnNDEuMiJF!5e0!3m2!1sen!2sza!4v1625667000000!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Booking / Conversion Section -->
+    <section id="book" class="py-20 bg-brand-cream border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-brand-charcoal p-6 text-center">
+                    <h2 class="text-2xl md:text-3xl font-serif text-white">Book Your Stay</h2>
+                    <p class="text-gray-400 text-sm mt-2">Best rates guaranteed when booking direct.</p>
+                </div>
+                <div class="p-8 md:p-12">
+                    <form onsubmit="event.preventDefault(); alert('Redirecting to Booking Engine...');" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Check-in</label>
+                                <input type="date" required class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Check-out</label>
+                                <input type="date" required class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Guests</label>
+                                <select class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none bg-white">
+                                    <option>1 Adult</option>
+                                    <option>2 Adults</option>
+                                    <option>2 Adults, 1 Child</option>
+                                    <option>2 Adults, 2 Children</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Promo Code</label>
+                                <input type="text" placeholder="Optional" class="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-gold text-white font-bold text-lg py-4 rounded hover:bg-brand-dark transition duration-300 shadow-md transform hover:-translate-y-1">
+                            CHECK AVAILABILITY
+                        </button>
+                    </form>
+
+                    <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+                        <p class="text-sm text-gray-500 mb-4">Or book via our partners:</p>
+                        <div class="flex justify-center gap-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                           <span class="font-bold text-blue-900">Booking.com</span>
+                           <span class="border-l border-gray-300 h-6"></span>
+                           <span class="font-bold text-blue-500">BluePillow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-serif text-center mb-8">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="group bg-brand-cream rounded-lg p-4 cursor-pointer">
+                    <summary class="font-bold text-brand-charcoal list-none flex justify-between items-center">
+                        What time is check-in/out?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 text-sm">Check-in is from 14:00 and Check-out is at 10:00. Early check-in may be arranged subject to availability.</p>
+                </details>
+                <details class="group bg-brand-cream rounded-lg p-4 cursor-pointer">
+                    <summary class="font-bold text-brand-charcoal list-none flex justify-between items-center">
+                        Is breakfast included?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 text-sm">Yes, we offer a complimentary breakfast for all guests staying at Masinga Lodge.</p>
+                </details>
+                <details class="group bg-brand-cream rounded-lg p-4 cursor-pointer">
+                    <summary class="font-bold text-brand-charcoal list-none flex justify-between items-center">
+                        Are pets allowed?
+                        <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="text-gray-600 mt-4 text-sm">Yes, we are pet-friendly! Please inform us in advance so we can prepare for your furry friend.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="bg-brand-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-12">
+            <!-- Brand -->
+            <div>
+                <a href="#" class="text-3xl font-serif font-bold tracking-widest uppercase mb-6 block">Masinga<span class="text-brand-gold">.</span></a>
+                <p class="text-gray-400 text-sm mb-6">Luxury indoor lodging with comfort, privacy and warm hospitality in the heart of KwaZulu-Natal.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold transition"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6 text-gray-300">Explore</h4>
+                <ul class="space-y-3 text-gray-400 text-sm">
+                    <li><a href="#about" class="hover:text-brand-gold transition">About Us</a></li>
+                    <li><a href="#rooms" class="hover:text-brand-gold transition">Accommodation</a></li>
+                    <li><a href="#amenities" class="hover:text-brand-gold transition">Amenities</a></li>
+                    <li><a href="#gallery" class="hover:text-brand-gold transition">Gallery</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6 text-gray-300">Contact</h4>
+                <ul class="space-y-3 text-gray-400 text-sm">
+                    <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-brand-gold"></i> 18 Dovehouse Rd, Everton, Gillitts, 3610</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-gold"></i> +27 (0) 72 123 4567</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-gold"></i> bookings@masingalodge.co.za</li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6 text-gray-300">Newsletter</h4>
+                <p class="text-gray-400 text-sm mb-4">Subscribe for special offers and updates.</p>
+                <form class="flex flex-col gap-2">
+                    <input type="email" placeholder="Email Address" class="bg-gray-800 border-none text-white text-sm p-3 rounded focus:ring-1 focus:ring-brand-gold">
+                    <button type="button" class="bg-brand-gold text-white text-sm font-bold uppercase py-3 rounded hover:bg-white hover:text-brand-dark transition">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+            <p>&copy; 2024 Masinga Lodge. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Elements -->
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/" class="fixed bottom-24 right-6 md:bottom-6 md:right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition z-50 animate-bounce">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Mobile Sticky Book Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 md:hidden z-40 flex justify-between items-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div>
+            <p class="text-xs text-gray-500">From</p>
+            <p class="text-lg font-bold text-brand-charcoal">R 2,045<span class="text-xs font-normal">/night</span></p>
+        </div>
+        <a href="#book" class="bg-brand-gold text-white px-6 py-2 rounded font-bold uppercase text-sm">Book Now</a>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[60] bg-black/95 justify-center items-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-4xl hover:text-brand-gold">&times;</button>
+        <img id="lightbox-img" src="" alt="Gallery Preview" class="max-w-full max-h-[90vh] rounded shadow-2xl object-contain">
+        <div class="absolute bottom-6 text-white text-center w-full">
+            <p id="lightbox-caption" class="text-lg font-serif"></p>
+        </div>
+    </div>
+
+    <!-- Logic Script -->
+    <script>
+        // 1. Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-dark', 'shadow-lg');
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('bg-brand-dark', 'shadow-lg', 'py-2');
+                navbar.classList.add('bg-transparent', 'py-4');
+            }
+        });
+
+        // 2. Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 3. Fade In Animation on Scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // 4. Lightbox Logic
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            
+            lightboxImg.src = img.src;
+            lightboxCaption.innerText = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on clicking outside image
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if(e.target.id === 'lightbox') closeLightbox();
+        });
+    </script>
+</body>
+</html>
